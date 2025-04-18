@@ -2,10 +2,11 @@ package lib;
 
 public class TaxFunction {
 
-    public static int calculateTax(int monthlySalary, int otherMonthlyIncome, int numberOfMonthWorking, int deductible, boolean isMarried, int numberOfChildren) {
+    private static final int MAX_MONTHS_PER_YEAR = 12;
 
-        if (numberOfMonthWorking > 12) {
-            System.err.println("More than 12 month working per year");
+    public static int calculateTax(int monthlySalary, int otherMonthlyIncome, int numberOfMonthWorking, int deductible, boolean isMarried, int numberOfChildren) {
+        if (numberOfMonthWorking > MAX_MONTHS_PER_YEAR) {
+            throw new IllegalArgumentException("Number of months working cannot exceed " + MAX_MONTHS_PER_YEAR);
         }
 
         if (numberOfChildren > 3) {
